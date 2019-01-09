@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <Router>
         <div id="App">
-          <div className="app-header large-12 text-center">
+          <div className="app-header large-12 small-12 text-center">
             <h1 className="primary-color">Daily Fashion</h1>
             <h6>One specially curated piece, for one day only.</h6>
           </div>
