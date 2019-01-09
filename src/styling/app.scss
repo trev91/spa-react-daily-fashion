@@ -1,0 +1,14 @@
+@import './_colors';
+@import './_fonts';
+
+.app-header {
+  border-bottom: 1px solid $primary;
+  min-height: 6vh;
+  font-size: calc(10px + 2vmin);
+  color: $primary;
+  height: 100%;
+}
+
+.pad-top {
+  padding-top: 30px;
+}

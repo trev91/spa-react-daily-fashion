@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Shop from "./components/shop";
+import About from "./components/about";
+import "./styling/app.scss";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div id="App">
+          <div className="app-header large-12 text-center">
+            <h1 className="primary-color">Daily Fashion</h1>
+            <h6>One specially curated piece, for one day only.</h6>
+          </div>
+          <div className="row pad-top">
+            <Route exact path="/" component={Shop} />
+            <Route exact path="/about" component={About} />
+          </div>
+        </div>
+      </Router>
     );
   }
 }
