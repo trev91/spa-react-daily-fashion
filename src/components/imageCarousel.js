@@ -3,59 +3,56 @@ import ImageZoom from "react-medium-image-zoom";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-const productImages = [
-  {
-    original: require("../assets/product_images/jumpsuit-1.jpg"),
-    thumbnail: require("../assets/product_images/jumpsuit-1.jpg")
-  },
-  {
-    original: require("../assets/product_images/jumpsuit-2.jpg"),
-    thumbnail: require("../assets/product_images/jumpsuit-2.jpg")
-  },
-  {
-    original: require("../assets/product_images/jumpsuit-3.jpg"),
-    thumbnail: require("../assets/product_images/jumpsuit-3.jpg")
-  },
-  {
-    original: require("../assets/product_images/jumpsuit-4.jpg"),
-    thumbnail: require("../assets/product_images/jumpsuit-4.jpg")
-  },
-  {
-    original: require("../assets/product_images/jumpsuit-5.jpg"),
-    thumbnail: require("../assets/product_images/jumpsuit-5.jpg")
-  }
-];
 
-export default class ImageCarousel extends Component {
-  _renderImage = image => {
-    return (
-      <div>
-        <ImageZoom
-          image={{
-            src: image.original,
-            alt: "Black Jumpsuit",
-            className: "img"
-          }}
-          zoomImage={{
-            src: image.original,
-            alt: "Black Jumpsuit"
-          }}
-          zoomMargin={15}
-        />
-      </div>
-    );
-  };
-
-  render() {
-    return (
-      <ImageGallery
-        items={productImages}
-        renderItem={this._renderImage}
-        showFullscreenButton={false}
-        showNav={false}
-        useBrowserFullscreen={false}
-        showPlayButton={false}
-      />
-    );
-  }
+// ensure that images are shown in order
+const _sortByOrder = (first, second) => {
+  if (first.order < second.order)
+    return -1;
+  if (first.order > second.order)
+    return 1;
+  return 0;
 }
+
+// gets images and formats for rendering in gallery, including dynamic alt text for img
+const _getImages = (images, altText) => {
+  let sortedImages = images.sort(_sortByOrder);
+  let imagesToRender = [];
+  sortedImages.map((image) => {
+    return imagesToRender.push({ original: image.url, thumbnail: image.url, alt: altText });
+  });
+  return imagesToRender;
+};
+
+// this renders the main (selected) image and allows for zoom
+const _renderImage = image => {
+  console.log(image)
+  return (
+    <div>
+      <ImageZoom
+        image={{
+          src: image.original,
+          alt: image.alt,
+          className: "img"
+        }}
+        zoomImage={{
+          src: image.original,
+          alt: image.alt
+        }}
+        zoomMargin={15}
+      />
+    </div>
+  );
+};
+
+export const ImageCarousel = props => {
+  return (
+    <ImageGallery
+      items={_getImages(props.productImages, props.altText)}
+      renderItem={_renderImage}
+      showFullscreenButton={false}
+      showNav={false}
+      useBrowserFullscreen={false}
+      showPlayButton={false}
+    />
+  );
+};
