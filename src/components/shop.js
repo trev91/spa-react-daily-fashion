@@ -3,6 +3,7 @@ import productInfo from "../dummydata/product.json";
 import { ImageCarousel } from "./imageCarousel";
 import { CollapsibleMenu } from "./collapsible";
 import { ColorSelection } from "./colorSelection";
+import { SizeSelection } from "./sizeSelection.js";
 const product = productInfo;
 const productPrice = `$${product["price"] / 100}`;
 export default class Shop extends Component {
@@ -10,6 +11,7 @@ export default class Shop extends Component {
     super(props);
     this.state = {
       selectedVariant: null,
+      selectedSize: null,
       loading: true
     };
   }
@@ -17,6 +19,7 @@ export default class Shop extends Component {
   componentDidMount() {
     this.setState({
       selectedVariant: product["variants"][0],
+      selectedSize: product["variants"][0]["sizes"][0],
       loading: false
     });
   }
@@ -29,13 +32,23 @@ export default class Shop extends Component {
     return colors;
   };
 
-  _updateSelectedVariant = color => {
+  _updateSelectedVariantByColor = color => {
+    console.log(product["variants"]);
     this.setState({ loading: true });
     var result = product["variants"].filter(variant => {
       return variant.color === color;
     });
     this.setState({
       selectedVariant: result[0],
+      loading: false
+    });
+  };
+  _updateSelectedSize = size => {
+    var result = this.state.selectedVariant["sizes"].filter(variantSize => {
+      return variantSize === size;
+    });
+    this.setState({
+      selectedSize: result[0],
       loading: false
     });
   };
@@ -49,7 +62,6 @@ export default class Shop extends Component {
   };
 
   render() {
-    console.log("selected variant id: ", this.state.selectedVariant);
     const sizeInfo = product["sizeInfo"];
     const materialInfo = product["materialInfo"];
     return (
@@ -74,12 +86,21 @@ export default class Shop extends Component {
             <div className="small-push-1 small-9">
               <CollapsibleMenu prompt={"Which size?"} body={sizeInfo} />
               <CollapsibleMenu prompt={"What's it like?"} body={materialInfo} />
-              {!this.state.loading && this.state.selectedVariant["color"] && (
-                <ColorSelection
-                  colors={this._getColors()}
-                  selected={this.state.selectedVariant}
-                  handleSelection={color => this._updateSelectedVariant(color)}
-                />
+              {!this.state.loading && this.state.selectedVariant && (
+                <div>
+                  <ColorSelection
+                    colors={this._getColors()}
+                    selected={this.state.selectedVariant}
+                    handleSelection={color =>
+                      this._updateSelectedVariantByColor(color)
+                    }
+                  />
+                  <SizeSelection
+                    sizes={this.state.selectedVariant["sizes"]}
+                    selected={this.state.selectedSize}
+                    handleSelection={size => this._updateSelectedSize(size)}
+                  />
+                </div>
               )}
             </div>
           </div>

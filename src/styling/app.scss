@@ -48,8 +48,33 @@ body {
   text-transform: capitalize;
 }
 
+.size-option {
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.out-of-stock {
+  color: $accentGray;
+}
+
 .circle {
   width: 23px;
   height: 23px;
   border-radius: 23px;
+}
+
+.even-spacing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vertical-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
