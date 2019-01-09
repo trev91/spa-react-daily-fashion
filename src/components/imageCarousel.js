@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ImageZoom from "react-medium-image-zoom";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -25,7 +25,6 @@ const _getImages = (images, altText) => {
 
 // this renders the main (selected) image and allows for zoom
 const _renderImage = image => {
-  console.log(image)
   return (
     <div>
       <ImageZoom
