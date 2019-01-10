@@ -81,10 +81,12 @@ export default class Shop extends Component {
     const items = this.state.bag;
     items.map(item => {
       if (
-        item["colorId"] === existingItem["colorId"] &&
-        item["sizeId"] === existingItem["sizeId"]
+        item["color"] === existingItem["color"] &&
+        item["size"] === existingItem["size"]
       ) {
         item["quantity"] += newItem["quantity"];
+        item["name"] = productInfo["name"]
+        item["price"] = productInfo["price"]
       }
     });
 
@@ -96,14 +98,15 @@ export default class Shop extends Component {
   // determines if item exists in bag - adds to quantity, or adds new item
   _handleItem = () => {
     const item = {};
-    item["sizeId"] = this.state.selectedSize.id;
-    item["colorId"] = this.state.selectedVariant.color.id;
+    item["size"] = this.state.selectedSize;
+    item["color"] = this.state.selectedVariant.color;
     item["quantity"] = this.state.quantity;
-
+    item["name"] = productInfo["name"]
+    item["price"] = productInfo["price"]
     var existingBagItem = this.state.bag.filter(bagItem => {
       return (
-        bagItem["sizeId"] === item["sizeId"] &&
-        bagItem["colorId"] === item["colorId"]
+        bagItem["size"] === item["size"] &&
+        bagItem["color"] === item["color"]
       );
     });
 
@@ -128,7 +131,6 @@ export default class Shop extends Component {
   };
 
   render() {
-    console.log(this.state.bag)
     const sizeInfo = product["sizeInfo"];
     const materialInfo = product["materialInfo"];
     return (

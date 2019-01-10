@@ -87,9 +87,9 @@ body {
 }
 
 .bag-button {
-      position: absolute;
-    right: 40px;
-    top: 30px;
+  position: absolute;
+  right: 40px;
+  top: 30px;
 }
 
 .react-numeric-input {
@@ -117,6 +117,7 @@ body {
   height: 25px;
   left: 36px;
   top: 36px;
+  z-index: 1;
 }
 
 .bm-burger-bars {
@@ -126,8 +127,8 @@ body {
 
 .bm-menu {
   background: $white;
-      padding: 20px;
-    font-size: 20px;
+  padding: 20px;
+  font-size: 20px;
 }
 
 .bm-item-list {
@@ -152,8 +153,10 @@ body {
   width: 100% !important;
 }
 .slide-pane_from_bottom {
-  height: 80vh;
-  margin-top: 30vh;
+  height: 450px;
+  // margin-top: 30vh;
+  position: absolute;
+  bottom: 0;
 }
 
 .slide-pane__header {
@@ -161,4 +164,15 @@ body {
   height: 30px;
   flex: none;
   border: none;
+}
+
+.slide-pane__close {
+  position: absolute;
+  right: 20px;
+  padding-top: 30px;
+}
+.slide-pane__content {
+  height: 440px !important;
+  overflow: auto;
+  padding: 0;
 }

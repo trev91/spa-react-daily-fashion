@@ -20,7 +20,7 @@ class App extends Component {
         <div id="App">
           <NavMenu />
           <main id="page">
-            <Bag visible={this.state.bagOpen} />
+            <Bag visible={this.state.bagOpen} items={JSON.parse(localStorage.getItem('bag'))} />
             <div className="app-header large-12 small-12 text-center">
               <div className="row">
                 <div className="branding large-12 columns">
