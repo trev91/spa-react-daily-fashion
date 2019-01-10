@@ -9,7 +9,8 @@ body {
   background: $primaryBg;
 }
 .app-header {
-  border-bottom: 1px solid $primary;
+  background: $white;
+  box-shadow: 0px 9px 7px -8px $accentGray;
   min-height: 6vh;
   font-size: calc(10px + 2vmin);
   color: $primary;
@@ -25,10 +26,11 @@ body {
 }
 
 .options-container {
-  // width: 100%;
+  box-shadow: -8px 8px 18px -3px $accentGray;
   height: 100%;
   background-color: $white;
   padding: 15px;
+  border-radius: 5px;
 }
 
 .space-between {
