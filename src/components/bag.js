@@ -7,12 +7,16 @@ export default class Bag extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPaneOpen: props.visible
+      isPaneOpen: props.visible,
+      items: []
     };
   }
 
   componentDidMount() {
     Modal.setAppElement(this.el);
+    if(localStorage.getItem('bag') !== null) {
+      this.setState({items: JSON.parse(localStorage.getItem('bag'))})
+    }
   }
 
   componentWillReceiveProps(nextProps, props) {
@@ -31,7 +35,7 @@ export default class Bag extends Component {
           height="200px"
           onRequestClose={() => this.setState({ isPaneOpen: false })}
         >
-          <div>And I am pane content on bottom.</div>
+          <div>{this.state.items.length}</div>
         </SlidingPane>
       </div>
     );

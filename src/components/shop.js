@@ -17,7 +17,7 @@ export default class Shop extends Component {
       loading: true,
       addedToCartPlay: false,
       quantity: 1,
-      bag: []
+      bag:[]
     };
   }
 
@@ -27,6 +27,11 @@ export default class Shop extends Component {
       selectedSize: product["variants"][0]["sizes"][0],
       loading: false
     });
+
+    // retrieve the bag contents if some already exist
+    if (localStorage.getItem('bag') !== null) {
+      this.setState({ bag: JSON.parse(localStorage.getItem('bag'))})
+    }
   }
 
   _getColors = () => {
@@ -37,8 +42,8 @@ export default class Shop extends Component {
     return colors;
   };
 
+  // updates the selected variant by color
   _updateSelectedVariantByColor = color => {
-    console.log(product["variants"]);
     this.setState({ loading: true });
     var result = product["variants"].filter(variant => {
       return variant.color === color;
@@ -50,6 +55,7 @@ export default class Shop extends Component {
     });
   };
 
+  // updates the selected size
   _updateSelectedSize = size => {
     var result = this.state.selectedVariant["sizes"].filter(variantSize => {
       return variantSize === size;
@@ -61,6 +67,7 @@ export default class Shop extends Component {
     });
   };
 
+  // render product bullet points
   _renderBullets = () => {
     let bulletsToRender = [];
     product["bullets"].map((bullet, i) => {
@@ -81,7 +88,9 @@ export default class Shop extends Component {
       }
     });
 
-    this.setState({ bag: items });
+    this.setState({ bag: items }, () => {
+      localStorage.setItem("bag", JSON.stringify(this.state.bag));
+    });
   };
 
   // determines if item exists in bag - adds to quantity, or adds new item
@@ -101,7 +110,9 @@ export default class Shop extends Component {
     if (existingBagItem.length > 0) {
       this._adjustBagItem(existingBagItem[0], item);
     } else {
-      this.setState({ bag: this.state.bag.concat(item) });
+      this.setState({ bag: this.state.bag.concat(item) }, () => {
+        localStorage.setItem('bag', JSON.stringify(this.state.bag))
+      });
     }
   };
 
@@ -117,6 +128,7 @@ export default class Shop extends Component {
   };
 
   render() {
+    console.log(this.state.bag)
     const sizeInfo = product["sizeInfo"];
     const materialInfo = product["materialInfo"];
     return (

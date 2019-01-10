@@ -4,7 +4,7 @@ import Shop from "./components/shop";
 import About from "./components/about";
 import NavMenu from "./components/navMenu";
 import Bag from "./components/bag";
-import BagIcon from "./assets/animations/iconBag"
+import BagIcon from "./assets/animations/iconBag";
 import "./styling/app.scss";
 
 class App extends Component {
@@ -27,7 +27,10 @@ class App extends Component {
                   <h1 className="primary-color">Daily Fashion</h1>
                   <h6>One specially curated piece, for one day only.</h6>
                 </div>
-                <div className="bag-button" onClick={() => this.setState({bagOpen: true})}>
+                <div
+                  className="bag-button"
+                  onClick={() => this.setState({ bagOpen: true })}
+                >
                   <BagIcon />
                 </div>
               </div>
