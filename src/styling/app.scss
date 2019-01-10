@@ -86,7 +86,14 @@ body {
   }
 }
 
+.bag-button {
+      position: absolute;
+    right: 40px;
+    top: 30px;
+}
+
 .react-numeric-input {
+  touch-action: none;
   height: 40px;
   input {
     margin: 0;
@@ -139,4 +146,19 @@ body {
     color: $black;
     outline: none;
   }
+}
+
+.slide-pane {
+  width: 100% !important;
+}
+.slide-pane_from_bottom {
+  height: 80vh;
+  margin-top: 30vh;
+}
+
+.slide-pane__header {
+  background: $white;
+  height: 30px;
+  flex: none;
+  border: none;
 }
