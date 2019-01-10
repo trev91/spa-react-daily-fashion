@@ -32,8 +32,8 @@ const _renderOptions = (sizes, selected, handleSelection) => {
 
 export const SizeSelection = props => {
   return (
-    <div className="row">
-      <div className="small-push-2 small-9 even-spacing">
+    <div className="row pad-top">
+      <div className="small-push-1 small-11 even-spacing">
         {_renderOptions(props.sizes, props.selected, props.handleSelection)}
       </div>
     </div>

@@ -4,13 +4,14 @@ import { ImageCarousel } from "./imageCarousel";
 import { CollapsibleMenu } from "./collapsible";
 import { ColorSelection } from "./colorSelection";
 import { SizeSelection } from "./sizeSelection.js";
+import NumericInput from "react-numeric-input";
 import AddedToCartAnimation from './../assets/animations/added_to_cart';
 const product = productInfo;
 const productPrice = `$${product["price"] / 100}`;
 export default class Shop extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedVariant: null, selectedSize: null, loading: true, addedToCartPlay: false };
+    this.state = { selectedVariant: null, selectedSize: null, loading: true, addedToCartPlay: false, quantity: 1 };
   }
 
   componentDidMount() {
@@ -37,7 +38,8 @@ export default class Shop extends Component {
     });
     this.setState({
       selectedVariant: result[0],
-      loading: false
+      loading: false,
+      quantity: 1
     });
   };
 
@@ -47,7 +49,8 @@ export default class Shop extends Component {
     });
     this.setState({
       selectedSize: result[0],
-      loading: false
+      loading: false,
+      quantity: 1
     });
   };
 
@@ -95,6 +98,13 @@ export default class Shop extends Component {
               {!this.state.loading && this.state.selectedVariant && <div>
                 <ColorSelection colors={this._getColors()} selected={this.state.selectedVariant} handleSelection={color => this._updateSelectedVariantByColor(color)} />
                 <SizeSelection sizes={this.state.selectedVariant["sizes"]} selected={this.state.selectedSize} handleSelection={size => this._updateSelectedSize(size)} />
+                <div className="row pad-top">
+                <div className="small-push-1 small-11">
+                  <NumericInput mobile max={this.state.selectedSize["quantity"]} min={1} value={this.state.quantity} />
+                </div>
+
+                </div>
+
               </div>}
               <div className="row">
                 <div className="small-push-1 small-11 add-to-bag pointer">

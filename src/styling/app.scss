@@ -81,3 +81,21 @@ body {
     text-decoration: underline;
   }
 }
+
+.react-numeric-input {
+  height: 40px;
+  input {
+    margin: 0;
+  }
+  b {
+    height: 37px !important;
+    top: 0px !important;
+    background: $accentGray !important;
+    &:first-of-type {
+      right: 0 !important;
+    }
+    &:last-of-type {
+      left: 0px !important;
+    }
+  }
+}
