@@ -1,6 +1,6 @@
 import React from "react";
 
-// renders color options and reads/writes selected color
+// renders size options and reads/writes selected size
 const _renderOptions = (sizes, selected, handleSelection) => {
   let sizesToRender = [];
   sizes.map((size, i) => {

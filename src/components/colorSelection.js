@@ -36,7 +36,7 @@ const _renderOptions = (colors, selected, handleSelection) => {
 export const ColorSelection = props => {
   return (
     <div className="row">
-      <div className="small-push-2 small-9  color-wrapper">
+      <div className="small-push-2 small-9">
         {_renderOptions(props.colors, props.selected, props.handleSelection)}
       </div>
     </div>

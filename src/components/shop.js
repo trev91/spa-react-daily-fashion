@@ -4,16 +4,13 @@ import { ImageCarousel } from "./imageCarousel";
 import { CollapsibleMenu } from "./collapsible";
 import { ColorSelection } from "./colorSelection";
 import { SizeSelection } from "./sizeSelection.js";
+import AddedToCartAnimation from './../assets/animations/added_to_cart';
 const product = productInfo;
 const productPrice = `$${product["price"] / 100}`;
 export default class Shop extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedVariant: null,
-      selectedSize: null,
-      loading: true
-    };
+    this.state = { selectedVariant: null, selectedSize: null, loading: true, addedToCartPlay: false };
   }
 
   componentDidMount() {
@@ -43,6 +40,7 @@ export default class Shop extends Component {
       loading: false
     });
   };
+
   _updateSelectedSize = size => {
     var result = this.state.selectedVariant["sizes"].filter(variantSize => {
       return variantSize === size;
@@ -61,11 +59,17 @@ export default class Shop extends Component {
     return bulletsToRender;
   };
 
+  _addToCart = () => {
+    this.setState({addedToCartPlay: true})
+    setTimeout(() => {
+      this.setState({addedToCartPlay: false})
+    }, 2500);
+  }
+
   render() {
     const sizeInfo = product["sizeInfo"];
     const materialInfo = product["materialInfo"];
-    return (
-      <div>
+    return <div>
         <div className="large-3 small-12 columns">
           <h3>{product["name"]}</h3>
           <p>{product["description"]}</p>
@@ -83,29 +87,27 @@ export default class Shop extends Component {
 
         <div className="large-3 small-12 columns">
           <div className="row options-container ">
+            {this.state.addedToCartPlay && <AddedToCartAnimation />}
+            {!this.state.addedToCartPlay &&
             <div className="small-push-1 small-9">
               <CollapsibleMenu prompt={"Which size?"} body={sizeInfo} />
               <CollapsibleMenu prompt={"What's it like?"} body={materialInfo} />
-              {!this.state.loading && this.state.selectedVariant && (
-                <div>
-                  <ColorSelection
-                    colors={this._getColors()}
-                    selected={this.state.selectedVariant}
-                    handleSelection={color =>
-                      this._updateSelectedVariantByColor(color)
-                    }
-                  />
-                  <SizeSelection
-                    sizes={this.state.selectedVariant["sizes"]}
-                    selected={this.state.selectedSize}
-                    handleSelection={size => this._updateSelectedSize(size)}
-                  />
+              {!this.state.loading && this.state.selectedVariant && <div>
+                <ColorSelection colors={this._getColors()} selected={this.state.selectedVariant} handleSelection={color => this._updateSelectedVariantByColor(color)} />
+                <SizeSelection sizes={this.state.selectedVariant["sizes"]} selected={this.state.selectedSize} handleSelection={size => this._updateSelectedSize(size)} />
+              </div>}
+              <div className="row">
+                <div className="small-push-1 small-11 add-to-bag pointer">
+                  <p onClick={() => this._addToCart()}>
+                    Add to Bag →
+                  </p>
                 </div>
-              )}
+              </div>
             </div>
+            }
+
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }

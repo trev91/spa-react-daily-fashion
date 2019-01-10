@@ -38,10 +38,6 @@ body {
   }
 }
 
-.color-wrapper {
-  // border: 1px solid $accentGray;
-}
-
 .color-option {
   padding: 8px;
   height: 45px;
@@ -77,4 +73,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.add-to-bag {
+  margin-top: 40px;
+  p {
+    text-decoration: underline;
+  }
 }
