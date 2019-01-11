@@ -22,45 +22,36 @@ class App extends Component {
   sendUsersMessage = message => {
     console.log("We need to send this message to the backend!", message);
     setTimeout(() => {
-      addResponseMessage("We're not available right now.");
       addLinkSnippet({
-        title: "Reach out to our support team by sending us a quick email!",
-        link: "mailto:support@dailyfashion.com"
+        title:
+          "We're not available right now. Reach out to our support team by sending us a quick email!",
+        link: "/contact"
       });
     }, 2500);
   };
 
   render() {
-    return (
-      <Router>
+    return <Router>
         <div id="App">
           <NavMenu />
           <main id="page">
-            <Widget
-              handleNewUserMessage={this.sendUsersMessage}
-              title="Let's Chat!"
-              subtitle="We're available during regular business hours"
-            />
+            <Widget handleNewUserMessage={this.sendUsersMessage} title="Let's Chat!" subtitle={<div>
+            <p>We're available during regular business hours. Or submit a ticket <span><a style={{color: "white", textDecoration: "underline"}} href="/contact">here</a></span>.</p>
+                </div>} />
 
-            <Bag
-              visible={this.state.bagOpen}
-              items={JSON.parse(localStorage.getItem("bag"))}
-            />
+            <Bag visible={this.state.bagOpen} items={JSON.parse(localStorage.getItem("bag"))} />
             <div className="app-header large-12 small-12 text-center">
               <div className="row">
                 <div className="branding large-12 columns">
                   <h1 className="primary-color">Daily Fashion</h1>
                   <h6>One of a kind clothing, one day only.</h6>
                 </div>
-                <div
-                  className="bag-button"
-                  onClick={() =>
-                    this.setState({
-                      bagOpen: true
-                    })
-                  }
-                >
-                  <BagIcon />
+                <div className="bag-button pointer" onClick={() => this.setState(
+                      {
+                        bagOpen: true
+                      }
+                    )}>
+                  <img className="bag-img" src="https://img.icons8.com/ios/50/000000/shopping-cart-filled.png" />
                 </div>
               </div>
             </div>
@@ -71,8 +62,7 @@ class App extends Component {
             </div>
           </main>
         </div>
-      </Router>
-    );
+      </Router>;
   }
 }
 

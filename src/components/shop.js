@@ -4,24 +4,28 @@ import { ImageCarousel } from "./imageCarousel";
 import { CollapsibleMenu } from "./collapsible";
 import { ColorSelection } from "./colorSelection";
 import { SizeSelection } from "./sizeSelection.js";
+import Loading from './../assets/animations/loading';
 import NumericInput from "react-numeric-input";
 import AddedToCartAnimation from "../assets/animations/addedToCart";
+import { getProduct } from "./../actions/product";
 const product = productInfo;
 const productPrice = `$${product["price"] / 100}`;
 export default class Shop extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      product: null,
       selectedVariant: null,
       selectedSize: null,
       loading: true,
       addedToCartPlay: false,
       quantity: 1,
-      bag:[]
+      bag: []
     };
   }
 
   componentDidMount() {
+    this._getProduct();
     this.setState({
       selectedVariant: product["variants"][0],
       selectedSize: product["variants"][0]["sizes"][0],
@@ -29,11 +33,24 @@ export default class Shop extends Component {
     });
 
     // retrieve the bag contents if some already exist
-    if (localStorage.getItem('bag') !== null) {
-      this.setState({ bag: JSON.parse(localStorage.getItem('bag'))})
+    if (localStorage.getItem("bag") !== null) {
+      this.setState({ bag: JSON.parse(localStorage.getItem("bag")) });
     }
   }
 
+  // fetch product info from API
+  _getProduct = async () => {
+    this.setState({loading: true})
+    const product = await getProduct();
+
+    // to simulate API call response time... wrap in setTimeout
+    setTimeout(() => {
+      this.setState({ loading: false, product: product });
+    }, 3000);
+
+  };
+
+  // used to know what colors to display
   _getColors = () => {
     let colors = [];
     product["variants"].map(variant => {
@@ -85,8 +102,8 @@ export default class Shop extends Component {
         item["size"] === existingItem["size"]
       ) {
         item["quantity"] += newItem["quantity"];
-        item["name"] = productInfo["name"]
-        item["price"] = productInfo["price"]
+        item["name"] = productInfo["name"];
+        item["price"] = productInfo["price"];
       }
     });
 
@@ -101,12 +118,11 @@ export default class Shop extends Component {
     item["size"] = this.state.selectedSize;
     item["color"] = this.state.selectedVariant.color;
     item["quantity"] = this.state.quantity;
-    item["name"] = productInfo["name"]
-    item["price"] = productInfo["price"]
+    item["name"] = productInfo["name"];
+    item["price"] = productInfo["price"];
     var existingBagItem = this.state.bag.filter(bagItem => {
       return (
-        bagItem["size"] === item["size"] &&
-        bagItem["color"] === item["color"]
+        bagItem["size"] === item["size"] && bagItem["color"] === item["color"]
       );
     });
 
@@ -114,7 +130,7 @@ export default class Shop extends Component {
       this._adjustBagItem(existingBagItem[0], item);
     } else {
       this.setState({ bag: this.state.bag.concat(item) }, () => {
-        localStorage.setItem('bag', JSON.stringify(this.state.bag))
+        localStorage.setItem("bag", JSON.stringify(this.state.bag));
       });
     }
   };
@@ -131,6 +147,10 @@ export default class Shop extends Component {
   };
 
   render() {
+    if (!this.state.product) {
+      return <Loading />;
+    }
+    const product = this.state.product;
     const sizeInfo = product["sizeInfo"];
     const materialInfo = product["materialInfo"];
     return (

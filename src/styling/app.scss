@@ -51,8 +51,8 @@ body {
 }
 
 .size-option {
-  eight: 32px;
-    border: 2px solid transparent;
+  height: 32px;
+  border: 2px solid transparent;
   border-radius: 30px;
   p {
     margin: 0;
@@ -149,6 +149,10 @@ body {
     color: $black;
     outline: none;
   }
+}
+
+.bag-img {
+  height: 35px;
 }
 
 .slide-pane {
