@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Modal from "react-modal";
 import SlidingPane from "react-sliding-pane";
 import { BagItem } from "./bagItem";
-import EmptyBag from './../assets/animations/emptyBag';
+import EmptyBag from "./../assets/animations/emptyBag";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 
 export default class Bag extends Component {
@@ -42,13 +42,13 @@ export default class Bag extends Component {
     return itemsToRender;
   };
 
-  _removeItem = (removedItem) => {
-    const updatedItems = this.state.items.filter((item) => {
+  _removeItem = removedItem => {
+    const updatedItems = this.state.items.filter(item => {
       return item !== removedItem;
-    })
+    });
     this.setState({ items: updatedItems }, () => {
-      localStorage.setItem('bag', JSON.stringify(updatedItems))
-    })
+      localStorage.setItem("bag", JSON.stringify(updatedItems));
+    });
   };
 
   render() {
@@ -68,34 +68,33 @@ export default class Bag extends Component {
           </div>
           <div className="row pad-top">
             <div className="large-12">
-            {this.state.items.length > 0 &&
-            <div>
-                <div className="large-2 columns">
-                  <h5>Product Name</h5>
+              {this.state.items && this.state.items.length > 0 && (
+                <div>
+                  <div className="large-2 columns">
+                    <h5>Product Name</h5>
+                  </div>
+                  <div className="large-2 columns">
+                    <h5>Color</h5>
+                  </div>
+                  <div className="large-2 columns">
+                    <h5>Size</h5>
+                  </div>
+                  <div className="large-2 columns">
+                    <h5>Quantity</h5>
+                  </div>
+                  <div className="large-2 columns">
+                    <h5>Price</h5>
+                  </div>
+                  <div className="large-2 columns">
+                    <h5>Actions</h5>
+                  </div>
                 </div>
-                <div className="large-2 columns">
-                  <h5>Color</h5>
+              )}
+              {this.state.items && this.state.items.length === 0 && (
+                <div>
+                  <EmptyBag />
                 </div>
-                <div className="large-2 columns">
-                  <h5>Size</h5>
-                </div>
-                <div className="large-2 columns">
-                  <h5>Quantity</h5>
-                </div>
-                <div className="large-2 columns">
-                  <h5>Price</h5>
-                </div>
-                <div className="large-2 columns">
-                  <h5>Actions</h5>
-                </div>
-            </div>
-            }
-            {this.state.items.length === 0 &&
-              <div>
-                <EmptyBag />
-              </div>
-            }
-
+              )}
             </div>
           </div>
           <div>{this._renderBagItems()}</div>
