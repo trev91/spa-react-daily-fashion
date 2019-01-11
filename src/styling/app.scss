@@ -8,6 +8,13 @@
 body {
   background: $primaryBg;
 }
+
+.button {
+  background: $primary;
+  &:hover {
+    background: darken($color: $primary, $amount: 10)
+  }
+}
 .app-header {
   background: $white;
   box-shadow: 0px 9px 7px -8px $accentGray;

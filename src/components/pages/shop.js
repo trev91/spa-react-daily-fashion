@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import productInfo from "../dummydata/product.json";
-import { ImageCarousel } from "./imageCarousel";
-import { CollapsibleMenu } from "./collapsible";
-import { ColorSelection } from "./colorSelection";
-import { SizeSelection } from "./sizeSelection.js";
-import Loading from './../assets/animations/loading';
+import productInfo from "../../dummydata/product.json";
+import { ImageCarousel } from "../imageCarousel";
+import { CollapsibleMenu } from "../collapsible";
+import { ColorSelection } from "../colorSelection";
+import { SizeSelection } from "../sizeSelection.js";
+import Loading from '../../assets/animations/loading';
 import NumericInput from "react-numeric-input";
-import AddedToCartAnimation from "../assets/animations/addedToCart";
-import { getProduct } from "./../actions/product";
+import AddedToCartAnimation from "../../assets/animations/addedToCart";
+import { getProduct } from "../../actions/product";
 const product = productInfo;
 const productPrice = `$${product["price"] / 100}`;
 export default class Shop extends Component {

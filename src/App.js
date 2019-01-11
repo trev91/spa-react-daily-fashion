@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Shop from "./components/shop";
-import About from "./components/about";
+import Shop from "./components/pages/shop";
+import About from "./components/pages/about";
+import Contact from "./components/pages/contact";
 import NavMenu from "./components/navMenu";
 import Bag from "./components/bag";
-import BagIcon from "./assets/animations/iconBag";
-import { Widget, addResponseMessage, addLinkSnippet } from "react-chat-widget";
+import { Widget, addLinkSnippet } from "react-chat-widget";
 
 import "react-chat-widget/lib/styles.css";
 import "./styling/app.scss";
@@ -59,6 +59,7 @@ class App extends Component {
             <div className="row pad-top">
               <Route exact path="/" component={Shop} />
               <Route exact path="/about" component={About} />
+            <Route exact path="/contact" component={Contact} />
             </div>
           </main>
         </div>
