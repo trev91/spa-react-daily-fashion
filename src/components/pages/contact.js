@@ -31,8 +31,8 @@ export default class Contact extends Component {
 
   render() {
     return <div className="row">
-        <div className="large-12 small-centered text-center columns">
-          <div className="large-push-3 large-6">
+        <div className="small-12 small-centered text-center columns">
+          <div className="small-push-3 small-6">
             <h1>Contact Us</h1>
             <h5>
               {!this.state.submitted ? `We'd love to hear from you! Submit the form below to send us a
@@ -50,7 +50,7 @@ export default class Contact extends Component {
         </div>
         {!this.state.submitted && <div className="contact-form pad-top">
             <div className="row">
-              <div className="large-push-4 large-4 small-12">
+              <div className="large-push-4 large-4 small-push-2 small-8">
                 <input required type="text" placeholder="Your name" value={this.state.name} onChange={event => this._handleNameChange(event)} />
                 <input required type="email" placeholder="Your email" value={this.state.email} onChange={event => this._handleEmailChange(event)} />
                 <textarea required placeholder="Your message" value={this.state.message} onChange={event => this._handleMessageChange(event)} />

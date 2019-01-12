@@ -81,11 +81,11 @@ class App extends Component {
               updateBag={updatedItems => this.updateBag(updatedItems)}
               closeBag={() => this._closeBag()}
             />
-            <div className="app-header large-12 small-12 text-center">
+            <div className="app-header small-12 text-center">
               <div className="row">
-                <div className="branding large-12 columns">
-                  <h1 className="primary-color">Daily Fashion</h1>
-                  <h6>One of a kind clothing, one day only.</h6>
+                <div className="branding small-12 columns">
+                  <h1 className="title primary-color">Daily Fashion</h1>
+                  <h6 className="subtitle">One of a kind clothing, one day only.</h6>
                 </div>
                 <div
                   className="bag-button pointer"
@@ -103,7 +103,7 @@ class App extends Component {
               </div>
             </div>
 
-            <div className="row pad-top">
+            <div className="row pad-top pad-sides main">
               <Route
                 exact
                 path="/"

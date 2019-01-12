@@ -161,7 +161,7 @@ export default class Shop extends Component {
           <ul>{this._renderBullets()}</ul>
           <h4 className="bold">{productPrice}</h4>
         </div>
-        <div className="large-6 small-12 columns">
+        <div className="large-6 small-12 columns gallery">
           {!this.state.loading && this.state.selectedVariant["images"] && (
             <ImageCarousel
               productImages={this.state.selectedVariant["images"]}

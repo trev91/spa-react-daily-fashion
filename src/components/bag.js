@@ -98,13 +98,13 @@ export default class Bag extends Component {
           isOpen={this.state.checkoutModalVisible}
         >
           <div className="row">
-            <div className="large-12 text-center">
+            <div className="small-12 text-center">
             {!this.state.purchaseComplete &&
               <div>
                 <h2>Complete Purchase</h2>
                 <h5>All payments are handled securely.</h5>
                 <p className="pad-top bold">Total due: ${this.state.total}</p>
-                <div className="large-push-3 large-6 pad-top">
+                <div className="small-push-3 small-6 pad-top">
                   <input type="text" placeholder="Card Number" />
                   <input type="text" placeholder="Expiration Date" />
                   <input type="text" placeholder="CVV" />
@@ -137,32 +137,32 @@ export default class Bag extends Component {
           height="200px"
           onRequestClose={() => this.props.closeBag()}
         >
-          <div className="large-12">
+          <div className="small-12">
             <div className="bag-header text-center">
               <h3 className="bold">My Bag</h3>
             </div>
           </div>
           <div className="row pad-top">
-            <div className="large-12 text-center">
+            <div className="small-12 text-center">
               {this.state.items && this.state.items.length > 0 && (
                 <div>
                   <div>
-                    <div className="large-2 columns">
+                    <div className="small-2 columns">
                       <h5>Product Name</h5>
                     </div>
-                    <div className="large-2 columns">
+                    <div className="small-2 columns">
                       <h5>Color</h5>
                     </div>
-                    <div className="large-2 columns">
+                    <div className="small-2 columns">
                       <h5>Size</h5>
                     </div>
-                    <div className="large-2 columns">
+                    <div className="small-2 columns">
                       <h5>Quantity</h5>
                     </div>
-                    <div className="large-2 columns">
+                    <div className="small-2 columns">
                       <h5>Price</h5>
                     </div>
-                    <div className="large-2 columns">
+                    <div className="small-2 columns">
                       <h5>Actions</h5>
                     </div>
                   </div>
