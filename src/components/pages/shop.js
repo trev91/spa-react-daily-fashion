@@ -153,8 +153,7 @@ export default class Shop extends Component {
     const product = this.state.product;
     const sizeInfo = product["sizeInfo"];
     const materialInfo = product["materialInfo"];
-    return (
-      <div>
+    return <div>
         <div className="large-3 small-12 columns">
           <h3 className="bold">{product["name"]}</h3>
           <p>{product["description"]}</p>
@@ -173,50 +172,37 @@ export default class Shop extends Component {
         <div className="large-3 small-12 columns">
           <div className="row options-container ">
             {this.state.addedToCartPlay && <AddedToCartAnimation />}
-            {!this.state.addedToCartPlay && (
-              <div className="small-push-1 small-9">
+            {!this.state.addedToCartPlay && <div className="small-push-1 small-9">
                 <CollapsibleMenu prompt={"Which size?"} body={sizeInfo} />
-                <CollapsibleMenu
-                  prompt={"What's it like?"}
-                  body={materialInfo}
-                />
-                {!this.state.loading && this.state.selectedVariant && (
-                  <div>
-                    <ColorSelection
-                      colors={this._getColors()}
-                      selected={this.state.selectedVariant}
-                      handleSelection={color =>
-                        this._updateSelectedVariantByColor(color)
-                      }
-                    />
-                    <SizeSelection
-                      sizes={this.state.selectedVariant["sizes"]}
-                      selected={this.state.selectedSize}
-                      handleSelection={size => this._updateSelectedSize(size)}
-                    />
+                <CollapsibleMenu prompt={"What's it like?"} body={materialInfo} />
+                {!this.state.loading && this.state.selectedVariant && <div>
+                    <ColorSelection colors={this._getColors()} selected={this.state.selectedVariant} handleSelection={color => this._updateSelectedVariantByColor(color)} />
+                    <SizeSelection sizes={this.state.selectedVariant["sizes"]} selected={this.state.selectedSize} handleSelection={size => this._updateSelectedSize(size)} />
                     <div className="row pad-top">
                       <div className="small-push-1 small-11">
-                        <NumericInput
-                          mobile
-                          max={this.state.selectedSize["quantity"]}
-                          min={1}
-                          value={this.state.quantity}
-                          onChange={val => this.setState({ quantity: val })}
-                        />
+                        <NumericInput mobile max={this.state.selectedSize["quantity"]} min={1} value={this.state.quantity} onChange={val => this.setState(
+                              { quantity: val }
+                            )} />
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
                 <div className="row">
                   <div className="small-push-1 small-11 add-to-bag pointer">
-                    <p className="bold" onClick={() => this._addToBag()}>Add to Bag →</p>
+                    <p className="bold" onClick={() => this._addToBag()}>
+                      Add to Bag →
+                    </p>
+
+                  <a className="pinterest pad-top" data-pin-do="buttonBookmark" data-pin-custom="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/">
+                    <p>Pin it</p>
+                    <img className="icon-img medium" src="https://i.ibb.co/LZrKbjY/pinterest-letter-logo-outline-in-a-rounded-square-318-56043-burned.png" alt="pinterest-letter-logo-outline-in-a-rounded-square-318-56043-burned" border="0" />
+                  </a>
+
+
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }

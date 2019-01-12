@@ -9,13 +9,13 @@ export const CollapsibleMenu = props => {
       trigger={
         <div className="space-between pointer">
           <p className="bold">{props.prompt}</p>
-          <p className="bold">+</p>
+          <p className="bold indicator">+</p>
         </div>
       }
       triggerWhenOpen={
         <div className="space-between pointer">
           <p className="bold">{props.prompt}</p>
-          <p className="bold">-</p>
+          <p className="bold indicator">-</p>
         </div>
       }
     >

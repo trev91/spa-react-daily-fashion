@@ -34,7 +34,7 @@ class App extends Component {
     setTimeout(() => {
       addLinkSnippet({
         title:
-          "We're not available right now. Reach out to our support team by sending us a quick email!",
+          "We're not available right now. Reach out to our support team by sending us a quick email from the link below!",
         link: "/contact"
       });
     }, 2500);
@@ -50,30 +50,34 @@ class App extends Component {
   }
 
   render() {
+    console.log(window.location.href.includes("/contact"))
     return (
       <Router>
         <div id="App">
           <NavMenu />
           <main id="page">
-            <Widget
-              handleNewUserMessage={this.sendUsersMessage}
-              title="Let's Chat!"
-              subtitle={
-                <div>
-                  <p>
-                    We're available during regular business hours. Or submit a
+            {!window.location.href.includes("/contact") &&
+              <Widget
+                handleNewUserMessage={this.sendUsersMessage}
+                title="Let's Chat!"
+                subtitle={
+                  <div>
+                    <p>
+                      We're available during regular business hours. Or submit a
                     ticket{" "}
-                    <a
-                      style={{ color: "white", textDecoration: "underline" }}
-                      href="/contact"
-                    >
-                      here
+                      <a
+                        style={{ color: "white", textDecoration: "underline" }}
+                        href="/contact"
+                      >
+                        here
                     </a>
-                    .
+                      .
                   </p>
-                </div>
-              }
-            />
+                  </div>
+                }
+              />
+          }
+
 
             <Bag
               visible={this.state.bagOpen}
