@@ -16,7 +16,7 @@ export const BagItem = props => {
 
   return (
     <div className="row pad-top">
-      <div className="large-12">
+      <div className="large-12 text-center">
         <div className="large-2 columns">
           {name}
         </div>
@@ -33,7 +33,7 @@ export const BagItem = props => {
           {cost}
         </div>
         <div className="large-2 columns pointer" onClick={() => removeItem(props, item)}>
-          remove
+          <img className="icon-img small" src="https://img.icons8.com/ios/50/000000/trash.png" />
         </div>
       </div>
     </div>

@@ -13,21 +13,25 @@ export default class EmptyBag extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.yet);
+    this._isMounted = false;
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this._changeText();
   }
 
   // relies on timeouts and intervals to change the text when the animation changes.
   _changeText = () => {
     setTimeout(() => {
-      this.setState({ message: "Yet!" });
-      this.yet = setInterval(() => {
-        if (this.state.message !== "Yet!") {
-          this.setState({ message: "Yet!" });
-        }
-      }, 5715);
+      if (this._isMounted) {
+        this.setState({ message: "Yet!" });
+        this.yet = setInterval(() => {
+          if (this.state.message !== "Yet!") {
+            this.setState({ message: "Yet!" });
+          }
+        }, 5715);
+      }
     }, 2000);
   };
 

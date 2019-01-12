@@ -4,7 +4,7 @@ import { ImageCarousel } from "../imageCarousel";
 import { CollapsibleMenu } from "../collapsible";
 import { ColorSelection } from "../colorSelection";
 import { SizeSelection } from "../sizeSelection.js";
-import Loading from '../../assets/animations/loading';
+import Loading from "../../assets/animations/loading";
 import NumericInput from "react-numeric-input";
 import AddedToCartAnimation from "../../assets/animations/addedToCart";
 import { getProduct } from "../../actions/product";
@@ -29,25 +29,26 @@ export default class Shop extends Component {
     this.setState({
       selectedVariant: product["variants"][0],
       selectedSize: product["variants"][0]["sizes"][0],
-      loading: false
+      loading: false,
+      bag: this.props.bag
     });
+  }
 
-    // retrieve the bag contents if some already exist
-    if (localStorage.getItem("bag") !== null) {
-      this.setState({ bag: JSON.parse(localStorage.getItem("bag")) });
+  componentWillReceiveProps(nextProps, props) {
+    if (nextProps.bag !== props.bag) {
+      this.setState({ bag: nextProps.bag });
     }
   }
 
   // fetch product info from API
   _getProduct = async () => {
-    this.setState({loading: true})
+    this.setState({ loading: true });
     const product = await getProduct();
 
     // to simulate API call response time... wrap in setTimeout
     setTimeout(() => {
       this.setState({ loading: false, product: product });
     }, 3000);
-
   };
 
   // used to know what colors to display
@@ -108,7 +109,7 @@ export default class Shop extends Component {
     });
 
     this.setState({ bag: items }, () => {
-      localStorage.setItem("bag", JSON.stringify(this.state.bag));
+      this.props.updateBag(this.state.bag);
     });
   };
 
@@ -122,23 +123,22 @@ export default class Shop extends Component {
     item["price"] = productInfo["price"];
     var existingBagItem = this.state.bag.filter(bagItem => {
       return (
-        bagItem["size"] === item["size"] && bagItem["color"] === item["color"]
+        bagItem["size"]["id"] === item["size"]["id"] &&
+        bagItem["color"]["id"] === item["color"]["id"]
       );
     });
 
     if (existingBagItem.length > 0) {
       this._adjustBagItem(existingBagItem[0], item);
     } else {
-      this.setState({ bag: this.state.bag.concat(item) }, () => {
-        localStorage.setItem("bag", JSON.stringify(this.state.bag));
-      });
+      // execute update to parent
+      this.props.updateBag(this.state.bag.concat(item));
     }
   };
 
   // adds item to cart
   _addToBag = () => {
     this._handleItem();
-
     // allow animation to play out for 2.5 secs
     this.setState({ addedToCartPlay: true });
     setTimeout(() => {

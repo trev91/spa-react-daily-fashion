@@ -14,8 +14,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bagOpen: false
+      bagOpen: false,
+      items: []
     };
+  }
+
+  componentDidMount() {
+    const items = JSON.parse(localStorage.getItem("bag"));
+    if (items === null) {
+      this.setState({ items: [] });
+    } else {
+      this.setState({ items: items });
+    }
   }
 
   // we'll use this eventually to send messages to the API
@@ -30,40 +40,89 @@ class App extends Component {
     }, 2500);
   };
 
+  updateBag = updatedBag => {
+    this.setState({ items: updatedBag });
+    localStorage.setItem("bag", JSON.stringify(updatedBag));
+  };
+
+  _closeBag() {
+    this.setState({ bagOpen: false });
+  }
+
   render() {
-    return <Router>
+    return (
+      <Router>
         <div id="App">
           <NavMenu />
           <main id="page">
-            <Widget handleNewUserMessage={this.sendUsersMessage} title="Let's Chat!" subtitle={<div>
-            <p>We're available during regular business hours. Or submit a ticket <span><a style={{color: "white", textDecoration: "underline"}} href="/contact">here</a></span>.</p>
-                </div>} />
+            <Widget
+              handleNewUserMessage={this.sendUsersMessage}
+              title="Let's Chat!"
+              subtitle={
+                <div>
+                  <p>
+                    We're available during regular business hours. Or submit a
+                    ticket{" "}
+                    <span>
+                      <a
+                        style={{ color: "white", textDecoration: "underline" }}
+                        href="/contact"
+                      >
+                        here
+                      </a>
+                    </span>
+                    .
+                  </p>
+                </div>
+              }
+            />
 
-            <Bag visible={this.state.bagOpen} items={JSON.parse(localStorage.getItem("bag"))} />
+            <Bag
+              visible={this.state.bagOpen}
+              items={this.state.items}
+              updateBag={updatedItems => this.updateBag(updatedItems)}
+              closeBag={() => this._closeBag()}
+            />
             <div className="app-header large-12 small-12 text-center">
               <div className="row">
                 <div className="branding large-12 columns">
                   <h1 className="primary-color">Daily Fashion</h1>
                   <h6>One of a kind clothing, one day only.</h6>
                 </div>
-                <div className="bag-button pointer" onClick={() => this.setState(
-                      {
-                        bagOpen: true
-                      }
-                    )}>
-                  <img className="bag-img" src="https://img.icons8.com/ios/50/000000/shopping-cart-filled.png" />
+                <div
+                  className="bag-button pointer"
+                  onClick={() =>
+                    this.setState({
+                      bagOpen: true
+                    })
+                  }
+                >
+                  <img
+                    className="icon-img"
+                    src="https://img.icons8.com/ios/50/000000/shopping-cart-filled.png"
+                  />
                 </div>
               </div>
             </div>
 
             <div className="row pad-top">
-              <Route exact path="/" component={Shop} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Shop
+                    bag={this.state.items}
+                    updateBag={updatedBag => this.updateBag(updatedBag)}
+                  />
+                )}
+              />
               <Route exact path="/about" component={About} />
-            <Route exact path="/contact" component={Contact} />
+              <Route exact path="/contact" component={Contact} />
             </div>
           </main>
         </div>
-      </Router>;
+      </Router>
+    );
   }
 }
 

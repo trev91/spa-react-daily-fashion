@@ -12,7 +12,7 @@ body {
 .button {
   background: $primary;
   &:hover {
-    background: darken($color: $primary, $amount: 10)
+    background: darken($color: $primary, $amount: 10);
   }
 }
 .app-header {
@@ -75,6 +75,7 @@ body {
   width: 23px;
   height: 23px;
   border-radius: 23px;
+  margin: 0 auto;
 }
 
 .even-spacing {
@@ -158,15 +159,18 @@ body {
   }
 }
 
-.bag-img {
+.icon-img {
   height: 35px;
+  &.small {
+    height: 20px;
+  }
 }
 
 .slide-pane {
   width: 100% !important;
 }
 .slide-pane_from_bottom {
-  height: 450px;
+  height: 80%;
   // margin-top: 30vh;
   position: absolute;
   bottom: 0;
@@ -174,7 +178,7 @@ body {
 
 .slide-pane__header {
   background: $white;
-  height: 30px;
+  height: 50px;
   flex: none;
   border: none;
 }
@@ -252,4 +256,25 @@ body {
 
 .rcw-snippet {
   background: $accentGray;
+}
+
+.checkout-modal {
+  height: 500px;
+  width: 500px;
+  background: $white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.checkout-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(77, 77, 77, 0.543);
 }

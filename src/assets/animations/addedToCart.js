@@ -8,9 +8,14 @@ export default class AddedToCartAnimation extends React.Component {
   }
 
   render() {
-    const defaultOptions = { loop: false, autoplay: true, animationData: require("./data_files/victory.json"), rendererSettings: { preserveAspectRatio: "xMidYMid slice" } };
+    const defaultOptions = {
+      loop: false,
+      autoplay: true,
+      animationData: require("./data_files/success_check.json"),
+      rendererSettings: { preserveAspectRatio: "xMidYMid slice" }
+    };
     return (
-      <div style={{height: 405}}>
+      <div style={{ height: 405 }}>
         <Lottie
           options={defaultOptions}
           height={160}
@@ -20,8 +25,6 @@ export default class AddedToCartAnimation extends React.Component {
         />
         <h5 className="text-center">Added to your Bag!</h5>
       </div>
-
     );
   }
 }
-

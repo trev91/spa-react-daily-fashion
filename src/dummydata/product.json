@@ -4,8 +4,17 @@
   "variants": [
     {
       "id": 1,
-      "color": "black",
+      "color": {
+        "id": 500,
+        "description": "black"
+      },
       "sizes": [
+        {
+          "id": 121,
+          "name": "X-Small",
+          "abbreviation": "XS",
+          "quantity": 27
+        },
         {
           "id": 123,
           "name": "Small",
@@ -40,10 +49,10 @@
           "order": 1,
           "url": "https://i.imgur.com/L66H82W.jpg"
         },
-                {
-                  "order": 4,
-                  "url": "https://i.imgur.com/pR1VZLg.jpg"
-                },
+        {
+          "order": 4,
+          "url": "https://i.imgur.com/pR1VZLg.jpg"
+        },
         {
           "order": 2,
           "url": "https://i.imgur.com/kae3b6f.jpg"
@@ -52,7 +61,6 @@
           "order": 3,
           "url": "https://i.imgur.com/hdzWrqC.jpg"
         }
-
       ]
     }
   ],
