@@ -4,6 +4,7 @@ import SlidingPane from "react-sliding-pane";
 import { BagItem } from "./bagItem";
 import { buyProduct } from "./../actions/product";
 import EmptyBag from "./../assets/animations/emptyBag";
+import Purchased from "./../assets/animations/purchased";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 
 export default class Bag extends Component {
@@ -13,7 +14,8 @@ export default class Bag extends Component {
       isPaneOpen: props.visible,
       items: [],
       total: null,
-      checkoutModalVisible: false
+      checkoutModalVisible: false,
+      purchaseComplete: false
     };
   }
 
@@ -75,7 +77,10 @@ export default class Bag extends Component {
   _initiatePurchase = () => {
     // wait for result and then show success if it worked
     buyProduct(this.state.items);
-    this.setState({ checkoutModalVisible: false });
+    const emptyBag = []
+    this.props.updateBag(emptyBag);
+    this.props.closeBag()
+    this.setState({ purchaseComplete: true });
   };
 
   render() {
@@ -94,20 +99,34 @@ export default class Bag extends Component {
         >
           <div className="row">
             <div className="large-12 text-center">
-              <h2>Complete Purchase</h2>
-              <p>All payments are handled securely.</p>
-              <p className="pad-top">Total due: {this.state.total}</p>
-              <div className="large-push-3 large-6 pad-top">
-                <input type="text" placeholder="Card Number" />
-                <input type="text" placeholder="Expiration Date" />
-                <input type="text" placeholder="CVV" />
-                <input
-                  type="submit"
-                  className="button round"
-                  value="Purchase"
-                  onClick={() => this._initiatePurchase()}
-                />
+            {!this.state.purchaseComplete &&
+              <div>
+                <h2>Complete Purchase</h2>
+                <h5>All payments are handled securely.</h5>
+                <p className="pad-top">Total due: ${this.state.total}</p>
+                <div className="large-push-3 large-6 pad-top">
+                  <input type="text" placeholder="Card Number" />
+                  <input type="text" placeholder="Expiration Date" />
+                  <input type="text" placeholder="CVV" />
+                  <input
+                    type="submit"
+                    className="button round"
+                    value="Purchase"
+                    onClick={() => this._initiatePurchase()}
+                  />
+                </div>
               </div>
+            }
+            {this.state.purchaseComplete &&
+            <div>
+              <h2>Purchased Completed!</h2>
+                <Purchased />
+                <p>You can expect your shipment to arrive in less than a week!</p>
+                <div className="button round" onClick={() => this.setState({checkoutModalVisible: false})}>Close</div>
+            </div>
+
+            }
+
             </div>
           </div>
         </Modal>
@@ -149,7 +168,7 @@ export default class Bag extends Component {
                   </div>
 
                   <div>{this._renderBagItems()}</div>
-                  <div className="large-12 text-center checkout pad-top">
+                  <div className="text-center checkout pad-to columns">
                     <h4>Total Due: ${this.state.total}</h4>
                     <div
                       className="button round"
