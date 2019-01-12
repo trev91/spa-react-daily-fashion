@@ -52,7 +52,7 @@ export default class About extends Component {
               </p>
             </div>
             <div className="large-12 text-center columns pad-top">
-              <h3>Come shop with us!</h3>
+              <h3 className="bold">Come shop with us!</h3>
               <p>
                 We only sell one thing per day, and once it's gone, it never comes back!
               </p>

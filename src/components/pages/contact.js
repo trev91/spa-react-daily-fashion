@@ -39,9 +39,9 @@ export default class Contact extends Component {
               message, and we'll respond within the week!` : <div>
               <Sent />
               <p className="pad-top">
-                  Thanks! We'll get back to you! Check out today's piece
-                    <a href="/"> here!</a>
+                  Thanks! We'll get back to you!
               </p>
+              <a href="/" className="button round">Go Shop!</a>
 
 
                 </div>}

@@ -8,14 +8,14 @@ export const CollapsibleMenu = props => {
       transitionTime={150}
       trigger={
         <div className="space-between pointer">
-          <p>{props.prompt}</p>
-          <p>+</p>
+          <p className="bold">{props.prompt}</p>
+          <p className="bold">+</p>
         </div>
       }
       triggerWhenOpen={
         <div className="space-between pointer">
-          <p>{props.prompt}</p>
-          <p>-</p>
+          <p className="bold">{props.prompt}</p>
+          <p className="bold">-</p>
         </div>
       }
     >

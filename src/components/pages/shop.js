@@ -156,10 +156,10 @@ export default class Shop extends Component {
     return (
       <div>
         <div className="large-3 small-12 columns">
-          <h3>{product["name"]}</h3>
+          <h3 className="bold">{product["name"]}</h3>
           <p>{product["description"]}</p>
           <ul>{this._renderBullets()}</ul>
-          <p>{productPrice}</p>
+          <h4 className="bold">{productPrice}</h4>
         </div>
         <div className="large-6 small-12 columns">
           {!this.state.loading && this.state.selectedVariant["images"] && (
@@ -209,7 +209,7 @@ export default class Shop extends Component {
                 )}
                 <div className="row">
                   <div className="small-push-1 small-11 add-to-bag pointer">
-                    <p onClick={() => this._addToBag()}>Add to Bag →</p>
+                    <p className="bold" onClick={() => this._addToBag()}>Add to Bag →</p>
                   </div>
                 </div>
               </div>

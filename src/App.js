@@ -63,14 +63,12 @@ class App extends Component {
                   <p>
                     We're available during regular business hours. Or submit a
                     ticket{" "}
-                    <span>
-                      <a
-                        style={{ color: "white", textDecoration: "underline" }}
-                        href="/contact"
-                      >
-                        here
-                      </a>
-                    </span>
+                    <a
+                      style={{ color: "white", textDecoration: "underline" }}
+                      href="/contact"
+                    >
+                      here
+                    </a>
                     .
                   </p>
                 </div>

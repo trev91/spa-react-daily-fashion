@@ -103,7 +103,7 @@ export default class Bag extends Component {
               <div>
                 <h2>Complete Purchase</h2>
                 <h5>All payments are handled securely.</h5>
-                <p className="pad-top">Total due: ${this.state.total}</p>
+                <p className="pad-top bold">Total due: ${this.state.total}</p>
                 <div className="large-push-3 large-6 pad-top">
                   <input type="text" placeholder="Card Number" />
                   <input type="text" placeholder="Expiration Date" />
@@ -119,7 +119,7 @@ export default class Bag extends Component {
             }
             {this.state.purchaseComplete &&
             <div>
-              <h2>Purchased Completed!</h2>
+              <h2 className="bold">Purchased Completed!</h2>
                 <Purchased />
                 <p>You can expect your shipment to arrive in less than a week!</p>
                 <div className="button round" onClick={() => this.setState({checkoutModalVisible: false})}>Close</div>
@@ -139,7 +139,7 @@ export default class Bag extends Component {
         >
           <div className="large-12">
             <div className="bag-header text-center">
-              <h3>My Bag</h3>
+              <h3 className="bold">My Bag</h3>
             </div>
           </div>
           <div className="row pad-top">
