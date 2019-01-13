@@ -5,8 +5,7 @@ const removeItem = (props, item) => {
 }
 
 export const BagItem = props => {
-  const item = props.item
-  const name = item["name"]
+  const item = props.item  
   const size = item["size"]["abbreviation"]
   const color = item["color"]["description"]
   const qty = item["quantity"]

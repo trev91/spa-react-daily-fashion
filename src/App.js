@@ -62,23 +62,18 @@ class App extends Component {
                 title="Let's Chat!"
                 subtitle={
                   <div>
-                    <p>
-                      We're available during regular business hours. Or submit a
-                    ticket{" "}
+                    <p>We're available during regular business hours. Or submit a ticket
                       <a
                         style={{ color: "white", textDecoration: "underline" }}
                         href="/contact"
-                      >
-                        here
-                    </a>
+                      >here
+                      </a>
                       .
-                  </p>
+                    </p>
                   </div>
                 }
               />
           }
-
-
             <Bag
               visible={this.state.bagOpen}
               items={this.state.items}
@@ -89,18 +84,14 @@ class App extends Component {
               <div className="row">
                 <div className="branding small-12 columns">                
                 <a href="/" className="title primary-color">Daily Fashion</a>                
-                  <h6 className="subtitle">One of a kind clothing, one day only.</h6>
-                
-                  
+                  <h6 className="subtitle">One of a kind clothing, one day only.</h6>                                  
                 </div>
                 <div
                   className="bag-button pointer"
                   onClick={() =>
                     this.setState({
                       bagOpen: true
-                    })
-                  }
-                >
+                    })}>
                   <img
                     className="icon-img"
                     src="https://img.icons8.com/ios/50/000000/shopping-cart-filled.png"
