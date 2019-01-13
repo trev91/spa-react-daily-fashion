@@ -62,7 +62,7 @@ class App extends Component {
                 title="Let's Chat!"
                 subtitle={
                   <div>
-                    <p>We're available during regular business hours. Or submit a ticket
+                    <p>We're available during regular business hours. Or submit a ticket {" "}
                       <a
                         style={{ color: "white", textDecoration: "underline" }}
                         href="/contact"
