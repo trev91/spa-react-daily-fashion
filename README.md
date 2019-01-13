@@ -26,7 +26,7 @@ Generally speaking, it's good practice to host our product images somewhere, and
 ## Why I used what I used
 
 #### Images
-I used `react-image-gallery` to handle displaying the images to the end use. The 'carousel-like' feature was what I was going for, and the zoom on click feature brings the image into focus (from `react-medium-image-zoom`). The flow of the implementation goes well with the rest of the site's motion and feel.
+I used `react-image-gallery` to handle displaying the images to the end user. The 'carousel-like' feature was what I was going for, and the zoom on click feature brings the image into focus (from `react-medium-image-zoom`). The flow of the implementation goes well with the rest of the site's motion and feel.
 
 #### Chat
 I used `react-chat-widget` to set up the HTML for our eventual chat feature. It is nice because it auto-responds to you as you type to it - which gives us some control on what we can do while we wait to have the feature actually implemented from the back-end. The animation and flow feels good.
