@@ -24,7 +24,7 @@ Generally speaking, it's good practice to host our product images somewhere, and
 `Lasiver-Medium` was a font only found on my desktop iMac, and not on my Macbook Pro. `Lasiver-Medium` is the primary option, while I went with `Helvetica` second instead of the `Helvetica Condensed Bold` as the first alternate. It was more of a fit in my opinion.
 
 #### Further needs
-Form inputs do need validation, and the chat feature needs to prevent the keyboard from popping up on mobile devices. (That's what I'd tackle next)
+Form inputs do need validation, and the chat feature needs to prevent the keyboard from popping up on mobile devices. (That's what I'd tackle next). I'd also like to implement a zoom feature on the main product image like the one I built here: ![Shop Stevie E-commerce](https://www.shopstevie.com/products/anaheim-floral-midi-dress)
 
 #### This would be an awesome app to make
 While making this, I thought it'd be a blast to create this with React Native, launch it, and see what kind of traction an idea like this could create!
