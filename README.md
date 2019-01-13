@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple e-commerce app built in React.
+![Daily Fashion App](https://i.ibb.co/vcGw3Y1/Screen-Shot-2019-01-13-at-12-38-24-AM.png)
+## Access the project
+Find it deployed on Heroku.<br>
+[Open](https://secret-scrubland-94372.herokuapp.com/)<br>
+Please allow 5-7 seconds when you first visit the site to allow the Heroku app to start.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Note
 
-### `npm start`
+This project is not hooked up to a back-end API service. For now, it reads in JSON data from a file within the project.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Thoughts
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+While going through the process of building this app, I had a couple thoughts:
 
-### `npm test`
+#### The API should give me slightly different data
+To see the changes, go to the `product.json` file inside the `dummydata/` folder. Essentially, I propose adding in `variants` at the top level of the data we receive from the API. Each product returned from the API can have a different variation - or maybe it wouldn't. But if our "product of the day" is being sold in stripes or polka dots, instead of just different shades of blue, having a `variation_id` at the top level would allow us to write separate descriptions/sizing info for the slightly different products. **This may be over the top for now, but gives us flexibility for future use.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### The image assets should be hosted
+Generally speaking, it's good practice to host our product images somewhere, and reference them from their public urls.
 
-### `npm run build`
+#### Fonts
+`Lasiver-Medium` was a font only found on my desktop iMac, and not on my Macbook Pro. `Lasiver-Medium` is the primary option, while I went with `Helvetica` second instead of the `Helvetica Condensed Bold` as the first alternate. It was more of a fit in my opinion.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Why I used what I used
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+#### Images
+I used `react-image-gallery` to handle displaying the images to the end use. The 'carousel-like' feature was what I was going for, and the zoom on click feature brings the image into focus (from `react-medium-image-zoom`). The flow of the implementation goes well with the rest of the site's motion and feel.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Chat
+I used `react-chat-widget` to set up the HTML for our eventual chat feature. It is nice because it auto-responds to you as you type to it - which gives us some control on what we can do while we wait to have the feature actually implemented from the back-end. The animation and flow feels good.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Lottie
+`Lottie` is what powers our various animations on the app. These subtle (and not so subtle) animations provide a feeling of legitimacy, as well as feedback when certain things happen. Adding to your bag, or checking out... there's an animation for that. ;)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Menus & Nav
+`react-sliding-pane`, `react-modal`, and `react-burger-menu` are what I used to handle the smooth slide-in menus and navigation menus. They are fairly lightweight and provide a slick UX.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Collapsible Menus
+`react-collapsible` was what was implemented here. The smooth animation and lightweight implementation made it a simple choice. I could have implemented this on my own, but with the small size, I felt I could save some time here and get nearly an identical solution to what I would have implemented.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Bag Storage
+I used `localStorage` to handle the user's bag items from session to session. Normally, I would use a state management library like `mobX` or `redux`, but for this size of a project, localStorage was perfect.
 
-## Learn More
+## Styling Notes
+I'll admit, I haven't used Foundation 5 before, so my styling could be better - however the result is solid. I used Sass in this project - it makes it simple to style parent/child components, but also allows for me to use variables like `colors` repeatedly. I would normally separate stylesheets by major "route" components, but seeing the brevity of this project, elected to keep it simple.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Some of the animations (over the top? Nah.)
+For others, just check it out on the site!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+#### Contact Form Submission
+![Contact Form](https://media.giphy.com/media/SJCJflOCLz1UwSFezb/giphy.gif)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Add to Bag
+![Add to Bag](https://media.giphy.com/media/8qAB1HXbYvYKlXSgp4/giphy.gif)
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+----------------------------------------------------------------------------
 
-### Making a Progressive Web App
+### Final
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Thanks for taking the time to review this app! It was fun to build - I wish there were a live API ready to go so we could launch this thing!
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Any questions? Reach out to me!
