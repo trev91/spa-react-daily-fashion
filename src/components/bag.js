@@ -147,23 +147,20 @@ export default class Bag extends Component {
               {this.state.items && this.state.items.length > 0 && (
                 <div>
                   <div>
-                    <div className="small-2 columns">
-                      <h5>Product Name</h5>
+                    <div className="small-3 columns">
+                      <div className="bag-header">Color</div>
+                    </div>
+                    <div className="small-3 columns">
+                      <div className="bag-header">Size</div>
                     </div>
                     <div className="small-2 columns">
-                      <h5>Color</h5>
+                      <div className="bag-header">Qty</div>
                     </div>
                     <div className="small-2 columns">
-                      <h5>Size</h5>
+                      <div className="bag-header">Price</div>
                     </div>
                     <div className="small-2 columns">
-                      <h5>Quantity</h5>
-                    </div>
-                    <div className="small-2 columns">
-                      <h5>Price</h5>
-                    </div>
-                    <div className="small-2 columns">
-                      <h5>Actions</h5>
+                      <div className="bag-header"></div>
                     </div>
                   </div>
 

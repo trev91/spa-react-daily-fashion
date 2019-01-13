@@ -87,9 +87,11 @@ class App extends Component {
             />
             <div className="app-header small-12 text-center">
               <div className="row">
-                <div className="branding small-12 columns">
-                  <h1 className="title primary-color">Daily Fashion</h1>
+                <div className="branding small-12 columns">                
+                <a href="/" className="title primary-color">Daily Fashion</a>                
                   <h6 className="subtitle">One of a kind clothing, one day only.</h6>
+                
+                  
                 </div>
                 <div
                   className="bag-button pointer"

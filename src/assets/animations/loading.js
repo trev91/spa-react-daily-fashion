@@ -24,7 +24,7 @@ export default class Loading extends React.Component {
         <Lottie
           options={defaultOptions}
           height={100}
-          width={460}
+          width={300}
           isStopped={this.state.isStopped}
           isPaused={this.state.isPaused}
         />

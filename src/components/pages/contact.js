@@ -32,7 +32,7 @@ export default class Contact extends Component {
   render() {
     return <div className="row">
         <div className="small-12 small-centered text-center columns">
-          <div className="small-push-3 small-6">
+          <div className="small-12 medium-6 medium-push-3">
             <h1>Contact Us</h1>
             <h5>
               {!this.state.submitted ? `We'd love to hear from you! Submit the form below to send us a

@@ -1,6 +1,20 @@
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Lasiver-Medium, HelveticaNeue-CondensedBold, Helvetica, Helmut, Arial, Lucida Grande";
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+  font-family: "Lasiver-Medium",
+    
+    "Helvetica",
+    "HelveticaNeue-CondensedBold",
+    "Helmut",
+    "Arial",
+    "Lucida Grande";
 }
+
 
 .bold {
   font-weight: 800;
