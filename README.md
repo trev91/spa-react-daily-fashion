@@ -12,7 +12,7 @@ This project is not hooked up to a back-end API service. For now, it reads in JS
 
 ## Thoughts
 
-While going through the process of building this app, I had a couple thoughts:
+While going through the process of building this app, I had a few thoughts:
 
 #### The API should give me slightly different data
 To see the changes, go to the `product.json` file inside the `dummydata/` folder. Essentially, I propose adding in `variants` at the top level of the data we receive from the API. Each product returned from the API can have a different variation - or maybe it wouldn't. But if our "product of the day" is being sold in stripes or polka dots, instead of just different shades of blue, having a `variation_id` at the top level would allow us to write separate descriptions/sizing info for the slightly different products. **This may be over the top for now, but gives us flexibility for future use.
@@ -22,6 +22,14 @@ Generally speaking, it's good practice to host our product images somewhere, and
 
 #### Fonts
 `Lasiver-Medium` was a font only found on my desktop iMac, and not on my Macbook Pro. `Lasiver-Medium` is the primary option, while I went with `Helvetica` second instead of the `Helvetica Condensed Bold` as the first alternate. It was more of a fit in my opinion.
+
+#### Further needs
+Form inputs do need validation, and the chat feature needs to prevent the keyboard from popping up on mobile devices. (That's what I'd tackle next)
+
+#### This would be an awesome app to make
+While making this, I thought it'd be a blast to create this with React Native, launch it, and see what kind of traction an idea like this could create!
+
+-------------------------------------------------------
 
 ## Why I used what I used
 
@@ -45,7 +53,7 @@ I used `react-chat-widget` to set up the HTML for our eventual chat feature. It 
 I used `localStorage` to handle the user's bag items from session to session. Normally, I would use a state management library like `mobX` or `redux`, but for this size of a project, localStorage was perfect.
 
 ## Styling Notes
-I'll admit, I haven't used Foundation 5 before, so my styling could be better - however the result is solid. I used Sass in this project - it makes it simple to style parent/child components, but also allows for me to use variables like `colors` repeatedly. I would normally separate stylesheets by major "route" components, but seeing the brevity of this project, elected to keep it simple.
+I'll admit, I haven't used Foundation 5 before, so my styling could be better - however the result is solid. I used Sass in this project - it makes it simple to style parent/child components, but also allows for me to use variables like `colors` repeatedly. I would normally separate stylesheets by major "route" components, but seeing the brevity of this project, elected to keep it simple. Each section is broken up in the code by identifiers.
 
 ### Some of the animations (over the top? Nah.)
 For others, just check it out on the site!
